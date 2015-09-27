@@ -1,6 +1,17 @@
 <resources>
-    <string name="app_name">会有用</string>
+    <string name="app_name">微应用</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_secret">我的密保</string>
+
+    <string name="view_secret_main_title">请输入口令</string>
+    <string name="view_secret_main_btn_cancel">C</string>
+    <string name="view_secret_main_btn_ok">√</string>
+    <string name="title_activity_secret_list">SecretListActivity</string>
+    <string name="title_activity_secret_detail">SecretDetailActivity</string>
+    <string name="title_activity_secret_view">SecretViewActivity</string>
+
 </resources>

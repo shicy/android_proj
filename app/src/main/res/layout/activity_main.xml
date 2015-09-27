@@ -1,11 +1,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:layout_height="match_parent" tools:context=".MainActivity"
+    android:background="#37F922">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_primary"
+        android:layout_marginTop="1dp"
+        android:clickable="true">
+        <org.shicy.common.views.NoScrollGridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnWidth="20dp"
+            android:numColumns="3"
+            android:horizontalSpacing="0dp"
+            android:verticalSpacing="0dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:clickable="true">
+        </org.shicy.common.views.NoScrollGridView>
+    </ScrollView>
 
 </RelativeLayout>
