@@ -1,4 +1,4 @@
-package org.shicy.myproj;
+package org.shicy.myproj.main;
 
 import android.content.Intent;
 import android.os.Build;
@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import org.shicy.common.base.BaseActivity;
+import org.shicy.myproj.R;
 
 /**
  * 启动页

@@ -1,4 +1,4 @@
-package org.shicy.myproj;
+package org.shicy.myproj.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import org.shicy.common.base.BaseActionBarActivity;
-import org.shicy.myproj.main.MainItemAdapter;
+import org.shicy.myproj.R;
 import org.shicy.myproj.secret.SecretActivity;
 
 import java.util.ArrayList;
