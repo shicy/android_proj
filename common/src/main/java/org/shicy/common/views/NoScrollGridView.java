@@ -12,11 +12,11 @@ import android.widget.GridView;
 public class NoScrollGridView extends GridView {
 
     public NoScrollGridView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public NoScrollGridView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public NoScrollGridView(Context context, AttributeSet attrs, int defStyle) {

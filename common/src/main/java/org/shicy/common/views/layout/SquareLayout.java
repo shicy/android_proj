@@ -11,11 +11,11 @@ import android.widget.RelativeLayout;
 public class SquareLayout extends RelativeLayout {
 
     public SquareLayout(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public SquareLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public SquareLayout(Context context, AttributeSet attrs, int defStyleAttr) {
