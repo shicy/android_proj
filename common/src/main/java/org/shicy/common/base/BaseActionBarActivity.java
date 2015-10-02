@@ -50,7 +50,8 @@ public class BaseActionBarActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(showHomeAsUp);
-        ActionBar.LayoutParams layout = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        ActionBar.LayoutParams layout = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
         actionBar.setCustomView(customView, layout);
     }
 

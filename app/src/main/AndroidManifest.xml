@@ -18,6 +18,7 @@
         <activity android:name=".main.MainActivity" android:label="@string/title_activity_main"/>
         <activity android:name=".secret.SecretActivity" android:label="@string/title_activity_secret"/>
         <activity android:name=".secret.SecretHomeActivity" android:label="@string/title_activity_secret"/>
+        <activity android:name=".secret.SecretEditActivity" android:label="@string/title_activity_secret"/>
 
     </application>
 

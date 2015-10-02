@@ -11,15 +11,15 @@ import org.shicy.common.base.BaseActionBarActivity;
 import org.shicy.myproj.R;
 
 /**
- *
- * Created by Shicy on 2015/9/27.
+ * 密保编辑页面
+ * Created by Shicy on 2015/10/2.
  */
-public class SecretHomeActivity extends BaseActionBarActivity {
+public class SecretEditActivity extends BaseActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_secret_home);
+        this.setContentView(R.layout.activity_secret_edit);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class SecretHomeActivity extends BaseActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(org.shicy.common.R.menu.menu_btn_edit, menu);
+        getMenuInflater().inflate(org.shicy.common.R.menu.menu_btn_finish, menu);
         return true;
     }
 
@@ -40,8 +40,8 @@ public class SecretHomeActivity extends BaseActionBarActivity {
         if (item.getItemId() == android.R.id.home) {
             this.finish();
         }
-        else if (item.getItemId() == org.shicy.common.R.id.action_edit) {
-            startActivity(new Intent(this, SecretEditActivity.class));
+        else if (item.getItemId() == org.shicy.common.R.id.action_finish) {
+            startActivity(new Intent(this, SecretHomeActivity.class));
             this.finish();
         }
         else return super.onOptionsItemSelected(item);

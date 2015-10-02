@@ -118,6 +118,7 @@ public class SecretActivity extends BaseActionBarActivity {
             intent.putExtra("password", pwdText.getText());
             intent.setClass(SecretActivity.this, SecretHomeActivity.class);
             startActivity(intent);
+            SecretActivity.this.finish();
         }
 
         private void doCancelClick() {
