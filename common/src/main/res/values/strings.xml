@@ -5,6 +5,13 @@
 
     <string name="my_txt_empty"></string>
 
+    <string name="my_txt_ok">确定</string>
+    <string name="my_txt_cancel">取消</string>
+    <string name="my_txt_edit">编辑</string>
+    <string name="my_txt_delete">删除</string>
+    <string name="my_txt_save">保存</string>
+    <string name="my_txt_finish">完成</string>
+
     <string name="my_txt_number_0">0</string>
     <string name="my_txt_number_1">1</string>
     <string name="my_txt_number_2">2</string>
