@@ -10,5 +10,7 @@
     <string name="view_secret_main_title">请输入口令</string>
     <string name="view_secret_main_btn_cancel">C</string>
     <string name="view_secret_main_btn_ok">√</string>
+    <string name="view_secret_main_hint1">首次输入的口令将作为你今后的口令，建议8位以上，请妥善保管。</string>
+    <string name="view_secret_main_hint2">为防止暴力破解，错误的口令一样可以进入，只是得到错误的内容。</string>
 
 </resources>

@@ -3,8 +3,10 @@ package org.shicy.myproj.secret;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.shicy.common.app.MyActionBarTitle;
 import org.shicy.common.base.BaseActionBarActivity;
@@ -16,10 +18,16 @@ import org.shicy.myproj.R;
  */
 public class SecretHomeActivity extends BaseActionBarActivity {
 
+    private String password = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secret_home);
+
+        password = this.getIntent().getStringExtra("password");
+        Log.d(SecretHomeActivity.class.getName(), password);
+        Toast.makeText(this, password, Toast.LENGTH_LONG).show();
     }
 
     @Override
