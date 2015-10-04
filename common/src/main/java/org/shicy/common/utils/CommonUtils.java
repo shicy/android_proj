@@ -12,8 +12,8 @@ public class CommonUtils {
 
     /**
      * MD5加密获得加密后的字符串
-     * @param str
-     * @return
+     * @param str 原字符串
+     * @return 加密后的字符串
      */
     public static String md5(String str) {
         byte[] hash;

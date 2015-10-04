@@ -3,6 +3,8 @@
 
     <string name="title_action_none">Null</string>
 
+    <string name="title_dialog_default">温馨提示</string>
+
     <string name="my_txt_empty"></string>
 
     <string name="my_txt_ok">确定</string>
