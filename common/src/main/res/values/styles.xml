@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyButtonStyle">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_height">44dp</item>
+    </style>
+
+    <style name="MyButtonStyle.ok">
+        <item name="android:background">#009DDA</item>
+    </style>
+
+</resources>

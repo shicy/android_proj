@@ -3,20 +3,25 @@ package org.shicy.myproj.secret;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import org.shicy.common.app.MyActionBarTitle;
 import org.shicy.common.base.BaseActionBarActivity;
+import org.shicy.common.base.BaseService;
 import org.shicy.myproj.R;
 
+import java.util.List;
+
 /**
- *
+ * 密保主页，一个列表页面
  * Created by Shicy on 2015/9/27.
  */
-public class SecretHomeActivity extends BaseActionBarActivity {
+public class SecretHomeActivity extends BaseActionBarActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private String password = "";
 
@@ -25,9 +30,26 @@ public class SecretHomeActivity extends BaseActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secret_home);
 
-        password = this.getIntent().getStringExtra("password");
-        Log.d(SecretHomeActivity.class.getName(), password);
-        Toast.makeText(this, password, Toast.LENGTH_LONG).show();
+        // 用户口令
+        this.password = this.getIntent().getStringExtra("password");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        SecretService secretService = BaseService.getService(SecretService.class);
+        List<SecretEntity> secretEntities = secretService.getAllSecretInfos();
+
+        ListView listView = (ListView)this.findViewById(R.id.listview);
+        if (secretEntities != null && secretEntities.size() > 0) {
+            this.findViewById(R.id.secret_home_empty).setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+            listView.setAdapter(new SecretItemAdapter(this, secretEntities, false));
+        }
+        else {
+            this.findViewById(R.id.secret_home_btn_add).setOnClickListener(this);
+        }
     }
 
     @Override
@@ -55,4 +77,17 @@ public class SecretHomeActivity extends BaseActionBarActivity {
         else return super.onOptionsItemSelected(item);
         return true;
     }
+
+    @Override
+    public void onClick(View v) {
+        // 点击添加按钮
+        if (v.getId() == R.id.secret_home_btn_add) {
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
 }

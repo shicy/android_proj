@@ -45,7 +45,7 @@ public class MainItemAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
-            convertView = this.inflater.inflate(R.layout.activity_main_grid_item, parent, false);
+            convertView = this.inflater.inflate(R.layout.adapter_main_grid_item, parent, false);
 
         Map<String, Object> map = (Map<String, Object>)this.getItem(position);
 
