@@ -121,6 +121,11 @@ public class SecretItemAdapter extends BaseAdapter {
     }
 
     @Override
+    public boolean isEnabled(int position) {
+        return this.getItemViewType(position) != TYPE_GROUP;
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = this.createView(position, parent);

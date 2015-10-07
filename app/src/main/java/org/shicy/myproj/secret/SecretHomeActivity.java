@@ -48,7 +48,7 @@ public class SecretHomeActivity extends BaseActionBarActivity implements View.On
 
         SecretService secretService = BaseService.getService(SecretService.class);
         List<SecretEntity> secretEntities = secretService.getAllSecretInfos();
-        this.emptyFlag = secretEntities.size() <= 0;
+        this.emptyFlag = secretEntities == null || secretEntities.size() <= 0;
 
         ListView listView = (ListView)this.findViewById(R.id.listview);
         if (secretEntities != null && secretEntities.size() > 0) {
@@ -70,14 +70,8 @@ public class SecretHomeActivity extends BaseActionBarActivity implements View.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(org.shicy.common.R.menu.menu_btn_edit, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.action_edit).setVisible(this.emptyFlag);
+        if (!this.emptyFlag)
+            getMenuInflater().inflate(org.shicy.common.R.menu.menu_btn_edit, menu);
         return true;
     }
 

@@ -1,5 +1,7 @@
 package org.shicy.common.utils;
 
+import java.util.List;
+
 /**
  * 字符串常用方法
  * Created by Shicy on 2015/10/4.
@@ -13,6 +15,15 @@ public class StringUtils {
      */
     public static boolean isBlank(String str) {
         return str == null || str.trim().length() <= 0;
+    }
+
+    /**
+     * 判断列表是否为空
+     * @param data 列表
+     * @return 为null或空列表时返回true，否则返回false
+     */
+    public static boolean isEmpty(List data) {
+        return data == null || data.size() == 0;
     }
 
 }
