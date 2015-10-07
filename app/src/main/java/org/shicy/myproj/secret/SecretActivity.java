@@ -17,6 +17,8 @@ import org.shicy.common.utils.StringUtils;
 import org.shicy.myproj.R;
 import org.shicy.myproj.common.AppConst;
 
+import java.util.Date;
+
 /**
  *
  * Created by Shicy on 2015/9/27.
@@ -161,10 +163,11 @@ public class SecretActivity extends BaseActionBarActivity implements View.OnClic
                 appConfig.setStringValue(AppConst.CFG_SECRET_PASSWORD, CommonUtils.md5(password));
             }
         }
-        Intent intent = new Intent();
-        intent.putExtra("password", CommonUtils.md5(password));
-        intent.setClass(SecretActivity.this, SecretHomeActivity.class);
-        startActivity(intent);
+
+        AppConfig.getInstance().setStringValue(AppConst.CFG_SECRET_PASSWORD_NOW, password);
+        AppConfig.getInstance().setLongValue(AppConst.CFG_SECRET_PASSWORD_EXP, new Date().getTime());
+
+        startActivity(new Intent(this, SecretHomeActivity.class));
         SecretActivity.this.finish();
     }
 

@@ -4,6 +4,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="button_txt_add_2">立即添加</string>
+
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_secret">我的密保</string>
 
@@ -13,8 +15,14 @@
     <string name="view_secret_main_hint1">首次输入的口令将作为你今后的口令，建议8位以上，请妥善保管。</string>
     <string name="view_secret_main_hint2">为防止暴力破解，错误的口令一样可以进入，只是得到错误的内容。</string>
     <string name="view_secret_home_empty">你还没有任何项</string>
-
-    <string name="button_txt_add_2">立即添加</string>
+    <string name="view_secret_edit_title_lbl">标题</string>
+    <string name="view_secret_edit_title_hint">请输入标题</string>
+    <string name="view_secret_edit_name_lbl">账号</string>
+    <string name="view_secret_edit_name_hint">请输入你的账号或标识名称</string>
+    <string name="view_secret_edit_pwd_lbl">密码</string>
+    <string name="view_secret_edit_pwd_hint">请输入密码</string>
+    <string name="view_secret_edit_repwd_lbl">确认密码</string>
+    <string name="view_secret_edit_repwd_hint">请再次输入密码</string>
 
 
 </resources>

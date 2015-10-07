@@ -26,4 +26,13 @@ public class StringUtils {
         return data == null || data.size() == 0;
     }
 
+    /**
+     * 转换成空字符串
+     * @param str 原字符串
+     * @return 空字符串
+     */
+    public static String trimToEmpty(String str) {
+        return str == null ? "" : str.trim();
+    }
+
 }
