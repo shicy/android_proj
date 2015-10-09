@@ -3,6 +3,7 @@ package org.shicy.common.app;
 import android.app.Application;
 
 import org.shicy.common.datasource.AppConfig;
+import org.shicy.common.utils.DeviceUtils;
 
 /**
  * 扩展Application，定义全局参数
@@ -29,4 +30,10 @@ public class MyApplication extends Application {
         AppConfig.getInstance().setBaseContext(this);
     }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // 初始化设置度量信息
+        DeviceUtils.initWithContext(this);
+    }
 }

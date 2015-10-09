@@ -3,8 +3,12 @@
 
     <declare-styleable name="MyEditText">
         <attr name="labelText" format="string"/>
+        <attr name="labelSize" format="dimension"/>
         <attr name="text" format="string"/>
         <attr name="placeholder" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="MyEditCombobox">
     </declare-styleable>
 
 </resources>

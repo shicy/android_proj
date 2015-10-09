@@ -17,6 +17,8 @@
     <string name="view_secret_home_empty">你还没有任何项</string>
     <string name="view_secret_edit_title_lbl">标题</string>
     <string name="view_secret_edit_title_hint">请输入标题</string>
+    <string name="view_secret_edit_group_lbl">分组名称</string>
+    <string name="view_secret_edit_group_hint">输入或选择一个分组</string>
     <string name="view_secret_edit_name_lbl">账号</string>
     <string name="view_secret_edit_name_hint">请输入你的账号或标识名称</string>
     <string name="view_secret_edit_pwd_lbl">密码</string>
