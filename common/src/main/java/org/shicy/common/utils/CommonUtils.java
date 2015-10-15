@@ -1,14 +1,69 @@
 package org.shicy.common.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Map;
 
 /**
  * 常用方法工具类
  * Created by Shicy on 2015/10/3.
  */
 public class CommonUtils {
+
+    /**
+     * 获取对象的公共属性值，优先通过getter,is方法获取对象
+     * @param owner 原始对象
+     * @param fieldName 属性名称
+     * @return 对象属性值
+     */
+    public static Object getProperty(Object owner, String fieldName) throws Exception {
+        if (StringUtils.isBlank(fieldName))
+            return null;
+        if (!ArrayUtils.isArray(owner)) {
+            if (owner instanceof Map) {
+                return ((Map)owner).get(fieldName);
+            }
+            else {
+                Class ownerCls = owner.getClass();
+                Method method = null;
+                String methodName = ("" + fieldName.charAt(0)).toUpperCase() + fieldName.substring(1);
+
+                try {
+                    method = ownerCls.getMethod("get" + methodName, new Class[0]);
+                    if (Modifier.isPublic(method.getModifiers())) {
+                        return method.invoke(owner, new Object[0]);
+                    }
+                }
+                catch (NoSuchMethodException e) {
+                    try {
+                        method = ownerCls.getMethod("is" + methodName, new Class[0]);
+                    }
+                    catch (NoSuchMethodException e1) {
+                        //
+                    }
+                }
+
+                if (method != null && Modifier.isPublic(method.getModifiers())) {
+                    return method.invoke(owner, new Object[0]);
+                }
+
+                try {
+                    Field field = ownerCls.getField(fieldName);
+                    return field.get(owner);
+                }
+                catch (NoSuchFieldException e) {
+                    //
+                }
+            }
+        }
+        return null;
+    }
 
     /**
      * MD5加密获得加密后的字符串

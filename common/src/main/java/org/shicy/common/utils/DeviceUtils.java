@@ -1,12 +1,15 @@
 package org.shicy.common.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 /**
  * 设备相关
  * Created by Shicy on 2015/10/2.
  */
 public class DeviceUtils {
+
+    private static boolean hasInit = false;
 
     public static int dimens_px_as_dip10 = 10;
     public static int dimens_px_as_dip12 = 12;
@@ -26,6 +29,8 @@ public class DeviceUtils {
      * @param context 应用上下文信息
      */
     public static void initWithContext(Context context) {
+        hasInit = true;
+
         dimens_px_as_dip10 = dip2px(context, dimens_px_as_dip10);
         dimens_px_as_dip12 = dip2px(context, dimens_px_as_dip12);
         dimens_px_as_dip15 = dip2px(context, dimens_px_as_dip15);
@@ -36,6 +41,16 @@ public class DeviceUtils {
         size_box_padding = dip2px(context, size_box_padding);
 
         standard_line_height = dip2px(context, standard_line_height);
+    }
+
+    /**
+     * 辅助开发
+     * @param context 开发时临时的上下文信息
+     */
+    public static void tryInitWithContext(Context context) {
+        if (hasInit) return ;
+        hasInit = true;
+        initWithContext(context);
     }
 
     /**

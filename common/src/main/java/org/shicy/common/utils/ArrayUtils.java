@@ -23,4 +23,13 @@ public class ArrayUtils {
         }
         return list;
     }
+
+    /**
+     * 判断对象是不是数组
+     * @param object 想要验证的对象
+     * @return 如果是数组返回true，否则返回false
+     */
+    public static boolean isArray(Object object) {
+        return object != null && object.getClass().isArray();
+    }
 }
