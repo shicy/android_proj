@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +25,10 @@ import org.shicy.common.utils.StringUtils;
  *
  * Created by Shicy on 2015/10/7.
  */
-public class MyEditText extends RelativeLayout implements TextWatcher {
+public class MyEditText extends RelativeLayout {
 
-    private TextView labelTxt;
-    private EditText inputTxt;
+    protected TextView labelTxt;
+    protected EditText inputTxt;
     private ImageButton clearBtn;
     private LinearLayout container;
 
@@ -43,6 +44,9 @@ public class MyEditText extends RelativeLayout implements TextWatcher {
 
     public MyEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        DeviceUtils.tryInitWithContext(context);
+        layout_height = DeviceUtils.standard_line_height;
 
         this.setBackgroundResource(R.drawable.bg_myedittext);
 
@@ -80,22 +84,34 @@ public class MyEditText extends RelativeLayout implements TextWatcher {
         inputTxt.setHint(StringUtils.trimToEmpty(styles.getString(R.styleable.MyEditText_placeholder)));
         container.addView(inputTxt, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
-        inputTxt.addTextChangedListener(this);
+        inputTxt.addTextChangedListener(new MyTextWatcher());
+        inputTxt.setOnFocusChangeListener(new MyTextFocusListener());
     }
 
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        //
+    public String getLabel() {
+        return this.labelTxt.getText().toString();
     }
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        //
+    public void setLabel(String label) {
+        this.labelTxt.setText(label);
     }
 
-    @Override
-    public void afterTextChanged(Editable s) {
-        if (StringUtils.isBlank(s.toString())) {
+    public String getText() {
+        return this.inputTxt.getText().toString();
+    }
+
+    public void setText(String text) {
+        this.inputTxt.setText(text);
+    }
+
+    /**
+     * 输入框文本内容变更，默认显示或隐藏清空按钮，当内容为空时隐藏，否则显示
+     * @param text 当前文本框内容
+     * @param oldText 变更前的文本框内容
+     * @param back 是不是回退操作
+     */
+    protected void textChanged(String text, String oldText, boolean back) {
+        if (StringUtils.isBlank(text)) {
             if (clearBtn != null)
                 clearBtn.setVisibility(GONE);
         }
@@ -121,4 +137,44 @@ public class MyEditText extends RelativeLayout implements TextWatcher {
             clearBtn.setVisibility(VISIBLE);
         }
     }
+
+    /**
+     * 输入框焦点变更
+     * @param hasFocus 当前是否获得焦点
+     */
+    protected void textFocusChanged(boolean hasFocus) {
+        //
+    }
+
+    //
+    private class MyTextWatcher implements TextWatcher {
+
+        private String lastText = "";
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int before, int after) {
+            lastText = s.toString();
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int after) {
+            MyEditText.this.textChanged(s.toString(), lastText, (before > 0 && after == 0));
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
+
+    }
+
+    //
+    private class MyTextFocusListener implements OnFocusChangeListener {
+
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            MyEditText.this.textFocusChanged(hasFocus);
+        }
+
+    }
+
 }
