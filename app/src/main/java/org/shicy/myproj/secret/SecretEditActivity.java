@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import org.shicy.common.app.MyActionBarTitle;
 import org.shicy.common.base.BaseActionBarActivity;
+import org.shicy.common.views.form.MyEditCombobox;
 import org.shicy.myproj.R;
 
 /**
@@ -17,6 +18,8 @@ import org.shicy.myproj.R;
  * Created by Shicy on 2015/10/2.
  */
 public class SecretEditActivity extends BaseActionBarActivity {
+
+    MyEditCombobox groupIpt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,17 @@ public class SecretEditActivity extends BaseActionBarActivity {
                 "密保允许任何口令通过，如果口令错误，只会提供给你一个错误的结果。（</font><font color='#ff0000'>防止暴力破解</font><font color='#999999'>）</font>";
         TextView descriptionTxt = (TextView)findViewById(R.id.secret_edit_description);
         descriptionTxt.setText(Html.fromHtml(description));
+
+        this.groupIpt = (MyEditCombobox)findViewById(R.id.secret_edit_group);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        String[] groups = new String[]{"囧分为氛围分", "就few减肥我减肥我", "ifudshfueiwhf", "会few金佛额忘记哦", "jfd",
+            "减肥的死哦但是", "囧非我非我附加额外fewfewfew", "菲菲我few热哦捂热偶哦俄乌切", "ifodsjfoewfje", "汇丰我发觉额我减肥"};
+        this.groupIpt.setData(groups, "");
     }
 
     @Override
@@ -50,10 +64,17 @@ public class SecretEditActivity extends BaseActionBarActivity {
             this.finish();
         }
         else if (item.getItemId() == org.shicy.common.R.id.action_finish) {
-            startActivity(new Intent(this, SecretHomeActivity.class));
-            this.finish();
+            if (this.save()) {
+                startActivity(new Intent(this, SecretHomeActivity.class));
+                this.finish();
+            }
         }
         else return super.onOptionsItemSelected(item);
         return true;
+    }
+
+    // 保存密保信息
+    private boolean save() {
+        return false;
     }
 }
