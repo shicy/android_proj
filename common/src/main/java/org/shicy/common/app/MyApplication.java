@@ -3,6 +3,7 @@ package org.shicy.common.app;
 import android.app.Application;
 
 import org.shicy.common.datasource.AppConfig;
+import org.shicy.common.datasource.db.DsManager;
 import org.shicy.common.utils.DeviceUtils;
 
 /**
@@ -22,12 +23,13 @@ public class MyApplication extends Application {
         return instance;
     }
 
+    /**
+     * 全局应用程序构造方法，应该由系统创建，禁止私自创建
+     */
     public MyApplication() {
         super();
         // 一个应用只会实例化一个Application，所以它是唯一的
         instance = this;
-        // 初始化应用配置信息
-        AppConfig.getInstance().setBaseContext(this);
     }
 
     @Override
@@ -35,5 +37,10 @@ public class MyApplication extends Application {
         super.onCreate();
         // 初始化设置度量信息
         DeviceUtils.initWithContext(this);
+        // 初始化应用配置信息
+        AppConfig.getInstance().setBaseContext(this);
+        // 初始化数据库管理类
+        DsManager.getInstance().setBaseContext(this);
+        DsManager.getInstance().config("default.db", null);
     }
 }

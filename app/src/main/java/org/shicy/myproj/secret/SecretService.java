@@ -22,7 +22,7 @@ public class SecretService extends BaseService {
         entityList.add(createEntity("喀麦隆的名声狼藉", "简介"));
         entityList.add(createEntity("囧分我发觉饿哦", "开卡"));
         entityList.add(createEntity("会few回复额我ifheu", "的身份的"));
-        return null;
+        return entityList;
     }
 
     private SecretEntity createEntity(String title, String groupName) {

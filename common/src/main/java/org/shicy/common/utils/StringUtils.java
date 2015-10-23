@@ -35,4 +35,11 @@ public class StringUtils {
         return str == null ? "" : str.trim();
     }
 
+    public static String trimToNull(String str) {
+        if (str == null)
+            return null;
+        str = str.trim();
+        return str.length() == 0 ? null : str;
+    }
+
 }

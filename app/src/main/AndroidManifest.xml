@@ -7,7 +7,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:name="org.shicy.common.app.MyApplication">
+        android:name="org.shicy.myproj.Application">
 
         <activity android:name=".main.LaunchActivity">
             <intent-filter>
